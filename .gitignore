@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+
+# Delta Lake (generated data — do not commit)
+delta/
+
+# Airflow logs (generated — do not commit)
+logs/
+
+# Environment
+.env
+*.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Spark temp
+spark-warehouse/
+derby.log
+metastore_db/
+
+# Ivy cache (Spark dependency downloads)
+.ivy2/
