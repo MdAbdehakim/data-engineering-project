@@ -29,32 +29,32 @@
 
 ```mermaid
 flowchart LR
-    subgraph INGESTION ["⚡ Ingestion"]
-        P["🐍 Producer<br/><code>producer.py</code>"]
+    subgraph INGESTION ["Ingestion"]
+        P["Producer - producer.py"]
     end
 
-    subgraph STREAMING ["📡 Streaming"]
-        K["📨 Kafka<br/>Broker :29092"]
-        KUI["🖥️ Kafka UI<br/>:8081"]
+    subgraph STREAMING ["Streaming"]
+        K["Kafka Broker :29092"]
+        KUI["Kafka UI :8081"]
     end
 
-    subgraph PROCESSING ["⚙️ Processing"]
-        S["🔥 PySpark<br/>Structured Streaming"]
+    subgraph PROCESSING ["Processing"]
+        S["PySpark Structured Streaming"]
     end
 
-    subgraph STORAGE ["💾 Storage"]
-        D["🗂️ Delta Lake<br/>Parquet + Transaction Log"]
+    subgraph STORAGE ["Storage"]
+        D["Delta Lake - Parquet"]
     end
 
-    subgraph ORCHESTRATION ["🎯 Orchestration"]
-        A["🌬️ Airflow<br/>3 DAGs · :8080"]
+    subgraph ORCHESTRATION ["Orchestration"]
+        A["Airflow - 3 DAGs :8080"]
     end
 
     P -->|JSON events| K
     K -.->|monitoring| KUI
     K -->|subscribe| S
     S -->|append mode| D
-    A -.->|schedules & monitors| S
+    A -.->|schedules| S
     A -.->|quality checks| D
 
     style INGESTION fill:#1a1a2e,stroke:#e94560,color:#fff
@@ -195,9 +195,9 @@ rm -rf delta/checkpoints delta/output
 
 ```mermaid
 graph LR
-    A["🖥️ check_environment<br/><i>BashOperator</i>"] --> B["📊 generate_pipeline_info<br/><i>PythonOperator</i>"]
-    B --> C["🔗 consume_pipeline_info<br/><i>PythonOperator</i>"]
-    C --> D["📋 pipeline_summary<br/><i>BashOperator + Jinja</i>"]
+    A["check_environment\nBashOperator"] --> B["generate_pipeline_info\nPythonOperator"]
+    B --> C["consume_pipeline_info\nPythonOperator"]
+    C --> D["pipeline_summary\nBashOperator + Jinja"]
 
     style A fill:#2d3436,stroke:#00b894,color:#fff
     style B fill:#2d3436,stroke:#0984e3,color:#fff
@@ -213,10 +213,10 @@ graph LR
 
 ```mermaid
 graph LR
-    E["📥 extract<br/><i>Generate 50 transactions</i>"] --> T["🔄 transform<br/><i>Pandas: TTC + flags</i>"]
-    T --> Q["✅ quality_gate<br/><i>Volume · Nulls · Values</i>"]
-    Q --> L["📊 load_summary<br/><i>Revenue · Rates · Metrics</i>"]
-    L --> C["🧹 cleanup<br/><i>Remove temp files</i>"]
+    E["extract\nGenerate 50 transactions"] --> T["transform\nPandas: TTC + flags"]
+    T --> Q["quality_gate\nVolume - Nulls - Values"]
+    Q --> L["load_summary\nRevenue - Rates - Metrics"]
+    L --> C["cleanup\nRemove temp files"]
 
     style E fill:#2d3436,stroke:#6c5ce7,color:#fff
     style T fill:#2d3436,stroke:#0984e3,color:#fff
@@ -233,12 +233,12 @@ graph LR
 
 ```mermaid
 graph TD
-    R["🔍 run_quality_checks"] --> D{"🔀 decide_branch"}
-    D -->|"rows ≥ 20 AND<br/>anomaly < 20%"| W["📦 load_to_warehouse"]
-    D -->|"otherwise"| A["🚨 trigger_alert"]
-    W --> F["📋 final_report<br/><i>trigger: ALL_DONE</i>"]
+    R["run_quality_checks"] --> D{"decide_branch"}
+    D -->|"PASS: rows>=20, anomaly<20%"| W["load_to_warehouse"]
+    D -->|"FAIL"| A["trigger_alert"]
+    W --> F["final_report\ntrigger: ALL_DONE"]
     A --> F
-    F --> E["🏁 end"]
+    F --> E["end"]
 
     style R fill:#2d3436,stroke:#0984e3,color:#fff
     style D fill:#2d3436,stroke:#fdcb6e,color:#2d3436
