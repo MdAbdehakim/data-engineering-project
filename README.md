@@ -255,10 +255,10 @@ graph TD
 
 | Phase | Description | Status | Progress |
 |:-----:|:------------|:------:|:--------:|
-| **1** | Airflow DAGs (BashOp, PythonOp, XCom, Branch) | ✅ Done | `████████████` 100% |
-| **2** | Kafka (Producer + Topic + Kafka UI) | ✅ Done | `████████████` 100% |
-| **3** | Delta Lake (PySpark Streaming → Parquet) | ✅ Done | `███████████░` 95% |
-| **4** | Full Pipeline (Unified Docker Compose) | 🔴 TODO | `░░░░░░░░░░░░` 0% |
+| **1** | Airflow DAGs (BashOp, PythonOp, XCom, Branch) | Done | 100% |
+| **2** | Kafka (Producer + Topic + Kafka UI) | Done | 100% |
+| **3** | Delta Lake (PySpark Streaming → Parquet) | Done | 95% |
+| **4** | Full Pipeline (Unified Docker Compose) | TODO | 0% |
 
 ---
 
