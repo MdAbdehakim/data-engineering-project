@@ -303,10 +303,6 @@ Copy `.env.example` → `.env` and adjust:
 
 ---
 
-## 👤 Author
-
-**Abdelhakim Mahdad**
-
 <p>
   <a href="https://github.com/MdAbdehakim"><img src="https://img.shields.io/badge/GitHub-MdAbdehakim-181717?style=flat-square&logo=github" alt="GitHub"/></a>
 </p>
