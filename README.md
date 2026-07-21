@@ -310,5 +310,5 @@ Copy `.env.example` → `.env` and adjust:
 ---
 
 <p align="center">
-  <sub>Built with ☕ and determination — Month 1 of the Big Data Engineer journey</sub>
+  <sub>Built with ☕ and determination</sub>
 </p>
