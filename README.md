@@ -11,7 +11,6 @@
 
 <p align="center">
   <strong>End-to-end streaming data pipeline for e-commerce transactions</strong><br>
-  <em>Month 1 — Foundations · Big Data Engineer Learning Path</em>
 </p>
 
 <p align="center">
